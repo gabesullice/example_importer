@@ -1,0 +1,17 @@
+example_importer.import:
+  route_name: example_importer.import
+  title: 'Import'
+  appears_on:
+    - example_importer.settings
+
+example_importer.rollback:
+  route_name: example_importer.rollback
+  title: 'Rollback'
+  appears_on:
+    - example_importer.settings
+
+example_importer.reset:
+  route_name: example_importer.reset
+  title: 'Reset'
+  appears_on:
+    - example_importer.settings

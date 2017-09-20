@@ -1,0 +1,92 @@
+id: course_catalog
+label: Course Catalog Migration
+migration_tags:
+  - OpenEdx
+  - Courses
+source:
+  plugin: course_catalog
+  track_changes: TRUE
+destination:
+  plugin: entity:node
+process:
+  type:
+    plugin: default_value
+    default_value: 'course'
+
+  title: name
+
+  body/summary: short_description
+  body/value: overview
+  body/format:
+    plugin: default_value
+    default_value: full_html
+
+  field_display_date: start_display # human readable date as text
+
+  field_course_effort: effort
+
+  field_event_register/uri: registration_url
+
+  field_event_register/title:
+    plugin: default_value
+    default_value: 'Register Now'
+
+  field_course_price: price
+
+  field_event_date:
+    plugin: format_date
+    from_format: 'Y-m-d\TH:i:s\Z'
+    to_format: 'Y-m-d\TH:i:s'
+    timezone: 'UTC'
+    source: start
+
+  field_event_end_date:
+    plugin: format_date
+    from_format: 'Y-m-d\TH:i:s\Z'
+    to_format: 'Y-m-d\TH:i:s'
+    timezone: 'UTC'
+    source: end
+
+  field_registration_start_date:
+    plugin: format_date
+    from_format: 'Y-m-d\TH:i:s\Z'
+    to_format: 'Y-m-d\TH:i:s'
+    timezone: 'UTC'
+    source: enrollment_start
+
+  field_registration_end_date:
+    plugin: format_date
+    from_format: 'Y-m-d\TH:i:s\Z'
+    to_format: 'Y-m-d\TH:i:s'
+    timezone: 'UTC'
+    source: enrollment_end
+
+  field_image/target_id:
+    plugin: example_image_url
+    source: media
+
+  field_category:
+    plugin: taxonomy_term_simple
+    source: course_categories
+    vocabulary: category
+
+  field_types:
+    plugin: taxonomy_term_simple
+    source: course_types
+    vocabulary: course_type
+    create_if_not_exists: TRUE
+
+  field_topics:
+    plugin: taxonomy_term_simple
+    source: course_topics
+    vocabulary: course_topic
+    create_if_not_exists: TRUE
+
+  status:
+    - plugin: callback
+      callable: json_encode
+      source: hidden
+    - plugin: static_map
+      map:
+        'true': 0
+        'false': 1

@@ -1,0 +1,10 @@
+name: Course Importer
+description: Imports courses from EdX into Drupal
+package: Integrations
+
+type: module
+core: 8.x
+
+dependencies:
+  - example_edx_api:example_edx_api
+  - migrate:migrate

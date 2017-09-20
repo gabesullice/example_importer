@@ -1,0 +1,14 @@
+services:
+  example_importer:
+    class: '\Drupal\example_importer\Importer\Importer'
+    arguments: ['@plugin.manager.migration']
+    calls:
+      - [setMigration, ['course_catalog']]
+  example_user_importer:
+    class: '\Drupal\example_importer\Importer\Importer'
+    arguments: ['@plugin.manager.migration']
+    calls:
+      - [setMigration, ['wp_users']]
+  logger.channel.example_importer:
+    parent: logger.channel_base
+    arguments: ['example_importer']

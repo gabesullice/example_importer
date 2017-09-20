@@ -1,0 +1,28 @@
+example_importer.settings:
+  path: '/admin/config/example/import'
+  defaults:
+    _form: 'Drupal\example_importer\Form\SettingsForm'
+    _title: 'Course Catalog'
+  requirements:
+    _permission: 'import course content'
+
+example_importer.import:
+  path: '/admin/config/example/import/run'
+  defaults:
+    _controller: 'Drupal\example_importer\Controller\ImportController::import'
+  requirements:
+    _permission: 'import course content'
+
+example_importer.rollback:
+  path: '/admin/config/example/import/rollback'
+  defaults:
+    _controller: 'Drupal\example_importer\Controller\ImportController::rollback'
+  requirements:
+    _permission: 'roll back course content'
+
+example_importer.reset:
+  path: '/admin/config/example/import/reset'
+  defaults:
+    _controller: 'Drupal\example_importer\Controller\ImportController::reset'
+  requirements:
+    _permission: 'import course content'

@@ -1,0 +1,5 @@
+example_importer.settings:
+  route_name: example_importer.settings
+  title: 'Events Import'
+  base_route: example_edx_api.settings
+  weight: 0

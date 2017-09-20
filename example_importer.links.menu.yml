@@ -1,0 +1,6 @@
+example_importer.settings:
+  title: 'Course Catalog'
+  description: 'Import Courses from EdX'
+  parent: system.admin_content
+  route_name: example_importer.settings
+  weight: 0

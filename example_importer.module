@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * Implements hook_cron().
+ *
+ * Schedules a synchronization of the edX course catalog.
+ */
+function example_importer_cron() {
+  $queue = \Drupal::queue('example_importer');
+
+  // We only ever need to be sure that we get the latest content once. Lining
+  // up multiple sync's in a row would be unnecessary and would just be a
+  // resource hog. We check the queue depth to prevent that.
+  $queue_depth = (integer) $queue->numberOfItems();
+  if ($queue_depth === 0) {
+    $queue->createItem(TRUE);
+  }
+}

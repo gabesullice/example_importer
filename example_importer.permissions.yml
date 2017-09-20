@@ -1,0 +1,7 @@
+import course content:
+  title: 'Import Courses'
+  description: 'Import course content from the EdX API into the Course content type.'
+
+roll back course content:
+  title: 'Roll back Courses'
+  description: '<em><strong>Caution:</strong> This will destroy any modifications made through Drupal.</em>'
